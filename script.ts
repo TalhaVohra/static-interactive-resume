@@ -1,42 +1,62 @@
 interface ResumeData {
     name: string;
-    email: string;
+    contact: string;
+    personalInfo: string;
     education: string;
-    workExperience: string;
+    intermediate: string;
+    undergraduate: string;
     skills: string[];
+    workExperience: string;
+    fresher: string;
+    fatherName: string;
+    contactNumber: string;
+    email: string;
 }
 
 let resumeData: ResumeData = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    education: 'B.Sc. in Computer Science',
-    workExperience: 'Software Developer at ABC Corp.',
-    skills: ['JavaScript', 'TypeScript', 'HTML', 'CSS']
+    name: 'Your Name',
+    contact: 'Contact Details',
+    personalInfo: 'Your personal details go here.',
+    education: 'Matric: ABC Secondary School',
+    intermediate: 'Intermediate: ABC High School',
+    undergraduate: 'Undergraduate: ABC University (BS Space Science and Technology)',
+    skills: ['Skill 1', 'Skill 2', 'Skill 3'],
+    workExperience: 'Details about your work experience go here.',
+    fresher: 'Fresher',
+    fatherName: 'Muhammad Shahid',
+    contactNumber: '0310-1232112',
+    email: 'abc@gmail.com'
 };
 
-function generateResume(data: ResumeData): void {
-    const resumeSection = document.getElementById('resume')!;
-    resumeSection.innerHTML = `
-        <h2 contenteditable="true" oninput="updateData('name', this.innerText)">${data.name}</h2>
-        <p contenteditable="true" oninput="updateData('email', this.innerText)"><strong>Email:</strong> ${data.email}</p>
-        <h3>Education</h3>
-        <p contenteditable="true" oninput="updateData('education', this.innerText)">${data.education}</p>
-        <h3>Work Experience</h3>
-        <p contenteditable="true" oninput="updateData('workExperience', this.innerText)">${data.workExperience}</p>
-        <h3>Skills</h3>
-        <ul id="skills-list">${data.skills.map(skill => `<li contenteditable="true" oninput="updateSkill(event)">${skill.trim()}</li>`).join('')}</ul>
-    `;
+function updateHeader(field: 'name' | 'contact', value: string): void {
+    resumeData[field] = value;
 }
 
-function updateData(field: keyof ResumeData, value: string): void {
+function updateSection(section: keyof ResumeData, value: string): void {
+    if (section === 'skills') {
+        console.error('Updating skills directly is not supported here.');
+    } else {
+        resumeData[section] = value;
+    }
+}
+
+
+function updatePersonalInfo(field: 'name' | 'fatherName' | 'contactNumber' | 'email', value: string): void {
     resumeData[field] = value;
 }
 
 function updateSkill(event: Event): void {
     const element = event.target as HTMLElement;
     const index = Array.from(document.querySelectorAll('#skills-list li')).indexOf(element);
-    resumeData.skills[index] = element.innerText.trim();
+    if (index !== -1) {
+        resumeData.skills[index] = element.innerText.trim();
+    }
 }
 
-// Generate the initial resume
-generateResume(resumeData);
+// Function to toggle visibility of skills section
+document.getElementById('toggle-skills')?.addEventListener('click', () => {
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        skillsSection.style.display = skillsSection.style.display === 'none' ? 'block' : 'none';
+    }
+});

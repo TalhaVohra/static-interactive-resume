@@ -35,6 +35,11 @@ button {
     cursor: pointer;
 }
 
+[contenteditable="true"]:focus {
+    outline: 1px solid #blue;
+}
+
+
 @media (max-width: 600px) {
     section {
         width: 95%;

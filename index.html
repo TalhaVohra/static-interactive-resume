@@ -4,46 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Interactive Resume</title>
+    <title>Editable Resume</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
-        <p>Contact Details</p>
+        <h1 contenteditable="true" oninput="updateHeader('name', this.innerText)">Your Name</h1>
+        <p contenteditable="true" oninput="updateHeader('contact', this.innerText)">Contact Details</p>
         <img src="profile.jpg" alt="Profile Picture">
     </header>
     
     <section id="personal-info">
         <h2>Personal Information</h2>
-        <p>Your personal details go here.</p>
-        <p><b>Name:</b>Talha</p> 
-        <p><b>Father's Name:</b>Muhammad Shahid</p> 
-        <p><b>Contact Number:</b>0310-1232112</p> 
-        <p><b>Email:</b>abc"gmail.com</p> 
+        <p contenteditable="true" oninput="updateSection('personalInfo', this.innerText)">Your personal details go here.</p>
+        <p><b>Name:</b> <span contenteditable="true" oninput="updatePersonalInfo('name', this.innerText)">Talha</span></p>
+        <p><b>Father's Name:</b> <span contenteditable="true" oninput="updatePersonalInfo('fatherName', this.innerText)">Muhammad Shahid</span></p>
+        <p><b>Contact Number:</b> <span contenteditable="true" oninput="updatePersonalInfo('contactNumber', this.innerText)">0310-1232112</span></p>
+        <p><b>Email:</b> <span contenteditable="true" oninput="updatePersonalInfo('email', this.innerText)">abc@gmail.com</span></p>
     </section>
     
     <section id="education">
         <h2>Education</h2>
-        <p><b>Matric:</b>ABC Secondry School</p> 
-        <p><b>Intermediate</b>ABC High School</p> 
-        <p><b>Undergraduate</b>ABC university(BS Space Science and Technology</p> 
-  
+        <p contenteditable="true" oninput="updateSection('education', this.innerText)"><b>Matric:</b> ABC Secondary School</p>
+        <p contenteditable="true" oninput="updateSection('intermediate', this.innerText)"><b>Intermediate:</b> ABC High School</p>
+        <p contenteditable="true" oninput="updateSection('undergraduate', this.innerText)"><b>Undergraduate:</b> ABC University (BS Space Science and Technology)</p>
     </section>
     
     <section id="skills">
         <h2>Skills</h2>
-        <ul>
-            <li>Skill 1</li>
-            <li>Skill 2</li>
-            <li>Skill 3</li>
+        <ul id="skills-list">
+            <li contenteditable="true" oninput="updateSkill(event)">Skill 1</li>
+            <li contenteditable="true" oninput="updateSkill(event)">Skill 2</li>
+            <li contenteditable="true" oninput="updateSkill(event)">Skill 3</li>
         </ul>
     </section>
     
     <section id="work-experience">
         <h2>Work Experience</h2>
-        <p>Details about your work experience go here.</p>
-          <p>Fresher</p>
+        <p contenteditable="true" oninput="updateSection('workExperience', this.innerText)">Details about your work experience go here.</p>
+        <p contenteditable="true" oninput="updateSection('fresher', this.innerText)">Fresher</p>
     </section>
     
     <button id="toggle-skills">Toggle Skills</button>
