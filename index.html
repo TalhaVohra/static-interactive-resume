@@ -4,50 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Interactive Resume</title>
+    <title>Dynamic Resume Builder</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
-        <p>Contact Details</p>
-        <img src="profile.jpg" alt="Profile Picture">
+        <h1>Dynamic Resume Builder</h1>
     </header>
-    
-    <section id="personal-info">
-        <h2>Personal Information</h2>
-        <p>Your personal details go here.</p>
-        <p><b>Name:</b>Talha</p> 
-        <p><b>Father's Name:</b>Muhammad Shahid</p> 
-        <p><b>Contact Number:</b>0310-1232112</p> 
-        <p><b>Email:</b>abc"gmail.com</p> 
+
+    <form id="resume-form">
+        <!-- Personal Information Section -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </fieldset>
+
+        <!-- Education Section -->
+        <fieldset>
+            <legend>Education</legend>
+            <label for="education">Education:</label>
+            <textarea id="education" name="education" required></textarea>
+        </fieldset>
+
+        <!-- Work Experience Section -->
+        <fieldset>
+            <legend>Work Experience</legend>
+            <label for="work-experience">Work Experience:</label>
+            <textarea id="work-experience" name="work-experience" required></textarea>
+        </fieldset>
+
+        <!-- Skills Section -->
+        <fieldset>
+            <legend>Skills</legend>
+            <label for="skills">Skills (comma-separated):</label>
+            <input type="text" id="skills" name="skills" required>
+        </fieldset>
+
+        <button type="submit">Generate Resume</button>
+    </form>
+
+    <section id="resume">
+        <!-- Dynamically generated resume will be displayed here -->
     </section>
-    
-    <section id="education">
-        <h2>Education</h2>
-        <p><b>Matric:</b>ABC Secondry School</p> 
-        <p><b>Intermediate</b>ABC High School</p> 
-        <p><b>Undergraduate</b>ABC university(BS Space Science and Technology</p> 
-  
-    </section>
-    
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Skill 1</li>
-            <li>Skill 2</li>
-            <li>Skill 3</li>
-        </ul>
-    </section>
-    
-    <section id="work-experience">
-        <h2>Work Experience</h2>
-        <p>Details about your work experience go here.</p>
-          <p>Fresher</p>
-    </section>
-    
-    <button id="toggle-skills">Toggle Skills</button>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
